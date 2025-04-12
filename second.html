@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .album {
+        margin-bottom: 20px;
+      }
+      .album h2 {
+        font-size: 1.5em;
+      }
+      .song {
+        cursor: pointer;
+        padding: 5px;
+        background-color: #f4f4f4;
+        margin: 5px 0;
+        border-radius: 5px;
+      }
+      .song:hover {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Music Albums</h1>
+    <div id="albums-container"></div>
+
+    <audio id="audio-player" controls>
+      Your browser does not support the audio element.
+    </audio>
+
+    <script>
+      // Fetch the JSON file
+      fetch("music.json")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          displayAlbums(data.albums);
+        })
+        .catch((error) => {
+          console.error("Error fetching music data:", error);
+        });
+
+      // Function to display albums and their songs
+      function displayAlbums(albums) {
+        const container = document.getElementById("albums-container");
+
+        albums.forEach((album) => {
+          const albumDiv = document.createElement("div");
+          albumDiv.classList.add("album");
+
+          const title = document.createElement("h2");
+          title.textContent = `${album.title} by ${album.artist} (${album.year})`;
+          albumDiv.appendChild(title);
+
+          const songsList = document.createElement("ul");
+          album.songs.forEach((song) => {
+            const songItem = document.createElement("li");
+            songItem.classList.add("song");
+            songItem.textContent = `${song.title} - ${song.duration}`;
+            songItem.addEventListener("click", () => playSong(song.file));
+            songsList.appendChild(songItem);
+          });
+
+          albumDiv.appendChild(songsList);
+          container.appendChild(albumDiv);
+        });
+      }
+
+      // Function to play a song
+      function playSong(filePath) {
+        const audioPlayer = document.getElementById("audio-player");
+        audioPlayer.src = filePath;
+        audioPlayer.play();
+      }
+    </script>
+  </body>
+</html>

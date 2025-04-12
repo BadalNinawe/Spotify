@@ -1,0 +1,32 @@
+{
+    "albums": [
+      {
+        "id": 1,
+        "title": "Album One",
+        "artist": "Artist One",
+        "genre": "Pop",
+        "songs": [
+          {
+            "title": "Dil Jhoom",
+            "duration": "5:05",
+            "file": "songs/diljhoom.mp3"
+          },
+          {
+            "title": " Dil Meri Na Sune",
+            "duration": "4:30",
+            "file": "songs/dmns.mp3"
+          },
+          
+          
+          {
+            "title": "Maula Maula",
+            "duration": "4:30",
+            "file": "songs/song5.mp3"
+          }
+          
+        ]
+      }
+      
+    ]
+  }
+  

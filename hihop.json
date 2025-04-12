@@ -1,0 +1,24 @@
+{
+    "albums": [
+      {
+        "id": 1,
+        "title": "Album One",
+        "artist": "Artist One",
+        "genre": "Pop",
+        "songs": [
+          {
+            "title": " O Mahi",
+            "duration": "4:30",
+            "file": "songs/omahi.mp3"
+          },  
+          {
+            "title": "Maula Maula",
+            "duration": "4:30",
+            "file": "songs/song5.mp3"
+          } 
+        ]
+      }
+      
+    ]
+  }
+  
